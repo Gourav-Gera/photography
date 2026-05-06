@@ -1,0 +1,181 @@
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Outfit:wght@300;400;500;600&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+    --gf-bg: #fdfbf7;
+    --gf-surface: #f5f2eb;
+    --gf-text: #2c2a29;
+    --gf-text-soft: #595553;
+    --gf-accent: #c88775;
+    --gf-accent-hover: #b57b67;
+    --gf-accent-deep: #5c2b29;
+    --gf-border: #e8e3da;
+}
+
+html,
+body,
+#root {
+    background: var(--gf-bg);
+    color: var(--gf-text);
+}
+
+body {
+    margin: 0;
+    font-family: "Outfit", system-ui, -apple-system, sans-serif;
+    font-weight: 300;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background: var(--gf-bg);
+}
+
+.font-display {
+    font-family: "Cormorant Garamond", serif;
+}
+
+.font-body {
+    font-family: "Outfit", sans-serif;
+}
+
+/* Shadcn base tokens — kept light, remove dark-mode override */
+@layer base {
+    :root {
+        --background: 39 53% 98%;
+        --foreground: 20 5% 16%;
+        --card: 39 53% 98%;
+        --card-foreground: 20 5% 16%;
+        --popover: 39 53% 98%;
+        --popover-foreground: 20 5% 16%;
+        --primary: 20 5% 16%;
+        --primary-foreground: 39 53% 98%;
+        --secondary: 38 28% 94%;
+        --secondary-foreground: 20 5% 16%;
+        --muted: 38 28% 94%;
+        --muted-foreground: 20 3% 40%;
+        --accent: 15 40% 63%;
+        --accent-foreground: 39 53% 98%;
+        --destructive: 0 70% 45%;
+        --destructive-foreground: 39 53% 98%;
+        --border: 34 26% 88%;
+        --input: 34 26% 88%;
+        --ring: 15 40% 63%;
+        --radius: 0.25rem;
+    }
+}
+
+@layer base {
+    * {
+        @apply border-border;
+    }
+
+    body {
+        @apply bg-background text-foreground;
+    }
+}
+
+/* Selection */
+::selection {
+    background: var(--gf-accent);
+    color: var(--gf-bg);
+}
+
+/* Scroll behavior */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Grain overlay (subtle) */
+.grain {
+    position: relative;
+}
+
+.grain::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.05;
+    mix-blend-mode: multiply;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/></filter><rect width='100%' height='100%' filter='url(%23n)' opacity=' 0.9'/></svg>");
+
+}
+
+/* Button reset to keep sharp edges */
+.gf-btn-primary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 1rem 2rem;
+    background: var(--gf-text);
+    color: var(--gf-bg);
+    font-family: "Outfit", sans-serif;
+    font-size: 0.75rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    transition: background 0.3s ease;
+    border: 1px solid var(--gf-text);
+    cursor: pointer;
+}
+
+.gf-btn-primary:hover {
+    background: var(--gf-accent);
+    border-color: var(--gf-accent);
+}
+
+.gf-btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 1rem 2rem;
+    background: transparent;
+    color: var(--gf-text);
+    border: 1px solid var(--gf-text);
+    font-family: "Outfit", sans-serif;
+    font-size: 0.75rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.gf-btn-secondary:hover {
+    background: var(--gf-text);
+    color: var(--gf-bg);
+}
+
+/* Bottom border input */
+.gf-input {
+    width: 100%;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid var(--gf-border);
+    padding: 0.75rem 0;
+    font-family: "Outfit", sans-serif;
+    color: var(--gf-text);
+    font-size: 1rem;
+    outline: none;
+    transition: border-color 0.3s ease;
+    border-radius: 0;
+}
+
+.gf-input:focus {
+    border-color: var(--gf-accent);
+}
+
+.gf-input::placeholder {
+    color: rgba(89, 85, 83, 0.5);
+}
+
+.overline {
+    font-family: "Outfit", sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.25em;
+    font-size: 0.7rem;
+    color: var(--gf-text-soft);
+    font-weight: 500;
+}
+
