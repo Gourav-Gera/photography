@@ -39,12 +39,13 @@ export default function Contact() {
         }
         setLoading(true);
         try {
-            await axios.post(`${API}/inquiries`, form);
-            toast.success("Thank you — we'll reach out within 24 hours.");
+            const response = await axios.post(`${API}/inquiries`, form);
+            toast.success(response.data.message || "Thank you — we'll reach out within 24 hours.");
             setForm(initial);
         } catch (err) {
-            console.error(err);
-            toast.error("Something went wrong. Please WhatsApp us instead.");
+            console.error("Form submission error:", err);
+            const errorMsg = err.response?.data?.detail || "Something went wrong. Please WhatsApp us instead.";
+            toast.error(errorMsg);
         } finally {
             setLoading(false);
         }
