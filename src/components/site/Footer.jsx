@@ -49,31 +49,31 @@ export default function Footer() {
           </span>
         <ul className="mt-5 space-y-3 text-[#FDFBF7]/80 text-sm font-light">
             <li className="flex items-center gap-3">
-                <Phone size={ 14} /> +91 98765 43210
+                <Phone size={ 14} /> +91 7206875837
             </li>
         <li className="flex items-center gap-3">
-            <Mail size={ 14} /> hello@gerafilms.in
+            <Mail size={ 14} /> geraphotography5@gmail.com
             </li>
-        <li>Sector 14, Gurugram · By appointment</li>
+        <li>12, Indri Road, Ladwa, Haryana 132041</li>
           </ul>
         <div className="flex items-center gap-4 mt-6">
             <a
-    href="https://instagram.com/gerafilms"
-    target="_blank"
-    rel="noreferrer"
-    data-testid="footer-instagram"
-    className="w-10 h-10 flex items-center justify-center border border-[#FDFBF7]/30 hover:bg-[#C88775] hover:border-[#C88775] transition-colors"
+            href="https://www.instagram.com/gera_films_ladwa/"
+            target="_blank"
+            rel="noreferrer"
+            data-testid="footer-instagram"
+            className="w-10 h-10 flex items-center justify-center border border-[#FDFBF7]/30 hover:bg-[#C88775] hover:border-[#C88775] transition-colors"
         >
         <Instagram size={16} />
             </a>
         <a
-            href="https://youtube.com"
-    target="_blank"
-    rel="noreferrer"
-    data-testid="footer-youtube"
-    className="w-10 h-10 flex items-center justify-center border border-[#FDFBF7]/30 hover:bg-[#C88775] hover:border-[#C88775] transition-colors"
+            href="https://www.youtube.com/@pankajgeraphotography1934"
+            target="_blank"
+            rel="noreferrer"
+            data-testid="footer-youtube"
+            className="w-10 h-10 flex items-center justify-center border border-[#FDFBF7]/30 hover:bg-[#C88775] hover:border-[#C88775] transition-colors"
         >
-        <Youtube size={16} />
+              <Youtube size={16} />
             </a>
           </div>
         </div>

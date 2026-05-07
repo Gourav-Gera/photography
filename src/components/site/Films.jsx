@@ -1,25 +1,27 @@
 import React, { useState } from "react";
-import { Play, X } from "lucide-react";
+import { Play, X, Film } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
+// ─── Poster images live in: public/films/images/ ────────────────────────────
+// Update the poster paths below whenever you add a new image.
 const films = [
   {
-    title: "Riya & Arjun — A Wedding Film",
-    place: "Udaipur · 2024",
-    poster: "https://images.pexels.com/photos/34607172/pexels-photo-34607172.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=800&w=1200",
-    videoUrl: "https://www.youtube.com/embed/7KndfS5n9jY", // Sample wedding film
+    title: "Rishikesh Pre Wedding Shoot",
+    place: "Rishikesh · 2025",
+    poster: "/films/images/masoori-prewedding.png",
+    videoUrl: "https://www.youtube.com/embed/UHYDYLc3YJo",
   },
   {
-    title: "Meher & Aadi — Pre-Wedding",
-    place: "Jaipur · 2024",
-    poster: "https://images.unsplash.com/photo-1722952934661-dde241aeb591?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA4Mzl8MHwxfHNlYXJjaHwzfHxpbmRpYW4lMjB3ZWRkaW5nJTIwY291cGxlfGVufDB8fHx8MTc3Njk1Mzk1MXww&ixlib=rb-4.1.0&q=85",
-    videoUrl: "https://www.youtube.com/embed/K4TOrB7at0Y", // Sample pre-wedding
+    title: "Wedding Night",
+    place: "Ladwa · 2021",
+    poster: "/films/images/ladwa-marriage.webp",
+    videoUrl: "https://www.youtube.com/embed/YWh9f-_Kx5Q",
   },
   {
-    title: "Above Goa — Drone Reel",
-    place: "Aerial · 2024",
-    poster: "https://images.pexels.com/photos/31841629/pexels-photo-31841629.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=800&w=1200",
-    videoUrl: "https://www.youtube.com/embed/vP6-86H97Sg", // Sample drone reel
+    title: "First Year",
+    place: "Birthday · 2023",
+    poster: "/films/images/birthday-shoot.webp",
+    videoUrl: "https://www.youtube.com/embed/SALrYwaAZRw",
   },
 ];
 
@@ -93,7 +95,7 @@ export default function Films() {
               >
                 <X size={32} />
               </button>
-              
+
               <iframe
                 src={`${selectedVideo.videoUrl}?autoplay=1`}
                 title={selectedVideo.title}
