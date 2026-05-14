@@ -6,11 +6,6 @@ import { createClient } from '@supabase/supabase-js';
 
 dotenv.config();
 
-// Initialize Supabase
-const supabaseUrl = process.env.SUPABASE_URL;
-const supabaseKey = process.env.SUPABASE_ANON_KEY;
-const supabase = createClient(supabaseUrl, supabaseKey);
-
 const app = express();
 const port = 8000;
 
@@ -34,8 +29,12 @@ app.post('/api/inquiries', async (req, res) => {
 
   try {
     // 1. Store in Supabase
-    if (process.env.SUPABASE_URL && process.env.SUPABASE_ANON_KEY && process.env.SUPABASE_ANON_KEY !== 'your_supabase_anon_key_here') {
+    const supabaseUrl = process.env.SUPABASE_URL;
+    const supabaseKey = process.env.SUPABASE_ANON_KEY;
+
+    if (supabaseUrl && supabaseKey && supabaseKey !== 'your_supabase_anon_key_here') {
       try {
+        const supabase = createClient(supabaseUrl, supabaseKey);
         const { data, error: sbError } = await supabase
           .from('inquiries')
           .insert([
