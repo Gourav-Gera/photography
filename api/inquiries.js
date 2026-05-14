@@ -31,7 +31,11 @@ export default async function handler(req, res) {
 
     if (supabaseUrl && supabaseKey && supabaseKey !== 'your_supabase_anon_key_here') {
       try {
-        const supabase = createClient(supabaseUrl, supabaseKey);
+        const supabase = createClient(supabaseUrl, supabaseKey, {
+          auth: {
+            persistSession: false,
+          }
+        });
         const { data, error: sbError } = await supabase
           .from('inquiries')
           .insert([
