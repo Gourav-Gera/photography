@@ -1,4 +1,9 @@
 import nodemailer from 'nodemailer';
+import { createClient } from '@supabase/supabase-js';
+
+const supabaseUrl = process.env.SUPABASE_URL;
+const supabaseKey = process.env.SUPABASE_ANON_KEY;
+const supabase = createClient(supabaseUrl, supabaseKey);
 
 export default async function handler(req, res) {
   if (req.method !== 'POST') {
@@ -19,6 +24,26 @@ export default async function handler(req, res) {
   });
 
   try {
+    // 1. Store in Supabase
+    const { data, error: sbError } = await supabase
+      .from('inquiries')
+      .insert([
+        { 
+          name, 
+          phone, 
+          email, 
+          event_type, 
+          event_date, 
+          message,
+          created_at: new Date().toISOString()
+        }
+      ]);
+
+    if (sbError) {
+      console.error("Supabase Error:", sbError);
+    }
+
+    // 2. Send Notification Email
     const destEmail = process.env.NOTIFICATION_EMAIL;
 
     if (!process.env.SMTP_USER || !process.env.SMTP_PASS || !destEmail) {
@@ -50,14 +75,14 @@ export default async function handler(req, res) {
     console.log(`Notification email sent to ${destEmail}`);
     
     return res.status(200).json({ 
-      id: Date.now().toString(), 
+      id: data?.[0]?.id || Date.now().toString(), 
       message: "Thank you — we'll reach out within 24 hours." 
     });
 
   } catch (error) {
-    console.error("Failed to send notification email:", error);
+    console.error("Error processing inquiry:", error);
     return res.status(500).json({ 
-      detail: "Failed to send email.", 
+      detail: "Failed to process inquiry. Please try again or contact us via WhatsApp.", 
       error: error.message 
     });
   }
