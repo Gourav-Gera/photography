@@ -9,13 +9,18 @@ export default async function handler(req, res) {
   const { name, phone, email, event_type, event_date, message } = req.body;
 
   // Set up the nodemailer transporter
+  const smtpUser = process.env.SMTP_USER;
+  const smtpPass = process.env.SMTP_PASS;
+  
+  console.log(`Attempting to send email via: ${smtpUser} (Port: 465)`);
+
   const transporter = nodemailer.createTransport({
     host: process.env.SMTP_HOST || 'smtp.gmail.com',
-    port: parseInt(process.env.SMTP_PORT || '587'),
-    secure: false, 
+    port: 465,
+    secure: true, // true for 465
     auth: {
-      user: process.env.SMTP_USER,
-      pass: process.env.SMTP_PASS,
+      user: smtpUser,
+      pass: smtpPass,
     },
   });
 
