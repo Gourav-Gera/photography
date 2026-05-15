@@ -48,17 +48,17 @@ export default function Pricing() {
         <section
             id="pricing"
     data-testid="pricing-section"
-    className="py-24 md:py-32 lg:py-40 bg-[#FDFBF7]"
+    className="py-24 md:py-32 lg:py-40 bg-[var(--gf-bg)] transition-colors duration-500"
         >
-        <div className="max-w-7xl mx-auto px-6 md:px-12">
+        <div className="max-w-[1440px] mx-auto px-6 md:px-12">
             <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-8 mb-16">
                 <div >
                 <span className="overline">Investment</span>
-                    <h2 className="font-display font-light text-4xl md:text-5xl lg:text-6xl text-[#2C2A29] mt-3 leading-[1.05]">
-    Thoughtful <em className="italic text-[#C88775]">packages</em>
+                    <h2 className="font-display font-light text-4xl md:text-5xl lg:text-6xl text-[var(--gf-text)] mt-3 leading-[1.05]">
+    Thoughtful <em className="italic text-[var(--gf-accent)]">packages</em>
             </h2>
           </div>
-        <p className="text-[#595553] max-w-md font-light">
+        <p className="text-[var(--gf-text-soft)] max-w-md font-light">
             Starting points — every shoot is eventually tailored around your
     days, your guest count, and your story.Custom quotes on request.
           </p>
@@ -71,12 +71,12 @@ export default function Pricing() {
                 key={p.name}
                 data-testid={`pricing-card-${i}`}
                 className={`p-8 md:p-10 flex flex-col ${p.featured
-                        ?"bg-[#2C2A29] text-[#FDFBF7] border border-[#2C2A29]"
-                  : "bg-transparent text-[#2C2A29] border border-[#E8E3DA]"
+                        ? "bg-[var(--gf-accent)] text-white border border-[var(--gf-accent)]"
+                  : "bg-transparent text-[var(--gf-text)] border border-[var(--gf-border)] hover:border-[var(--gf-accent)]/40 transition-colors"
               } `}
             >
               {p.featured && (
-                <span className="overline mb-5" style={{ color: "#C88775" }}>
+                <span className="overline mb-5 text-white/80">
                   Most Chosen
                 </span>
               )}
@@ -85,7 +85,7 @@ export default function Pricing() {
               </h3>
               <p
                 className={`text-sm font-light mt-2 ${
-        p.featured ?"text-[#FDFBF7]/70" : "text-[#595553]"
+        p.featured ? "text-white/75" : "text-[var(--gf-text-soft)]"
     } `}
               >
                 {p.tagline}
@@ -96,7 +96,7 @@ export default function Pricing() {
                 </span>
                 <span
                   className={`text-xs uppercase tracking-[0.2em] ${
-        p.featured ?"text-[#FDFBF7]/70" : "text-[#595553]"
+        p.featured ? "text-white/75" : "text-[var(--gf-text-soft)]"
     } `}
                 >
                   {p.onwards}
@@ -104,14 +104,14 @@ export default function Pricing() {
               </div>
               <ul
                 className={`mt-8 space-y-3 flex-1 ${
-        p.featured ?"text-[#FDFBF7]/90" : "text-[#595553]"
+        p.featured ? "text-white/90" : "text-[var(--gf-text-soft)]"
     } `}
               >
                 {p.includes.map((inc) => (
                   <li key={inc} className="flex items-start gap-3 text-sm font-light">
                     <Check
                       size={16}
-                      className={p.featured ? "text-[#C88775] mt-1" : "text-[#C88775] mt-1"}
+                      className={`mt-1 ${p.featured ? "text-white" : "text-[var(--gf-accent)]"}`}
                     />
                     <span>{inc}</span>
                   </li>
@@ -122,8 +122,8 @@ export default function Pricing() {
                 data-testid={`pricing-cta-${i}`}
                 className={`mt-10 inline-flex items-center justify-center gap-2 px-6 py-3 text-[11px] uppercase tracking-[0.2em] transition-all ${
         p.featured
-            ?"bg-[#FDFBF7] text-[#2C2A29] hover:bg-[#C88775] hover:text-white"
-                    : "border border-[#2C2A29] text-[#2C2A29] hover:bg-[#2C2A29] hover:text-[#FDFBF7]"
+            ? "bg-white text-[var(--gf-accent)] hover:bg-white/90 font-semibold"
+                    : "border border-[var(--gf-border)] text-[var(--gf-text)] hover:border-[var(--gf-accent)] hover:text-[var(--gf-accent)]"
     } `}
               >
                 Enquire

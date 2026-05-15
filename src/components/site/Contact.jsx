@@ -55,21 +55,21 @@ export default function Contact() {
         <section
             id="contact"
             data-testid="contact-section"
-            className="py-24 md:py-32 lg:py-40 bg-[#FDFBF7]"
+            className="py-24 md:py-32 lg:py-40 bg-[var(--gf-bg)] transition-colors duration-500"
         >
-            <div className="max-w-7xl mx-auto px-6 md:px-12 grid lg:grid-cols-12 gap-12 lg:gap-20">
+            <div className="max-w-[1440px] mx-auto px-6 md:px-12 grid lg:grid-cols-12 gap-12 lg:gap-20">
                 {/* Left column */}
                 <div className="lg:col-span-5">
                     <span className="overline">Let's Talk</span>
                     <h2
                         data-testid="contact-title"
-                        className="font-display font-light text-4xl md:text-5xl lg:text-6xl text-[#2C2A29] mt-4 leading-[1.05]"
+                        className="font-display font-light text-4xl md:text-5xl lg:text-6xl text-[var(--gf-text)] mt-4 leading-[1.05]"
                     >
                         Tell us your
                         <br />
-                        <em className="italic text-[#C88775]">story</em>.
+                        <em className="italic text-[var(--gf-accent)]">story</em>.
                     </h2>
-                    <p className="mt-6 text-[#595553] text-base md:text-lg font-light leading-relaxed">
+                    <p className="mt-6 text-[var(--gf-text-soft)] text-base md:text-lg font-light leading-relaxed">
                         Share a few details and we'll get back within 24 hours with
                         availability, ideas, and a tailored quote.
                     </p>
@@ -80,10 +80,10 @@ export default function Contact() {
                             data-testid="contact-phone"
                             className="flex items-center gap-4 group"
                         >
-                            <Phone size={18} className="text-[#C88775]" />
+                            <Phone size={18} className="text-[var(--gf-accent)]" />
                             <div >
                                 <span className="overline">Call</span>
-                                <p className="text-[#2C2A29] font-body group-hover:text-[#C88775] transition-colors">
+                                <p className="text-[var(--gf-text)] font-body group-hover:text-[var(--gf-accent)] transition-colors">
                                     + 91 7206785837
                                 </p>
                             </div>
@@ -93,10 +93,10 @@ export default function Contact() {
                             data-testid="contact-email"
                             className="flex items-center gap-4 group"
                         >
-                            <Mail size={18} className="text-[#C88775]" />
+                            <Mail size={18} className="text-[var(--gf-accent)]" />
                             <div >
                                 <span className="overline">Email</span>
-                                <p className="text-[#2C2A29] font-body group-hover:text-[#C88775] transition-colors">
+                                <p className="text-[var(--gf-text)] font-body group-hover:text-[var(--gf-accent)] transition-colors">
                                     geraphotography5@gmail.com
                                 </p>
                             </div>
@@ -108,19 +108,19 @@ export default function Contact() {
                             data-testid="contact-instagram"
                             className="flex items-center gap-4 group"
                         >
-                            <Instagram size={18} className="text-[#C88775]" />
+                            <Instagram size={18} className="text-[var(--gf-accent)]" />
                             <div >
                                 <span className="overline">Instagram</span>
-                                <p className="text-[#2C2A29] font-body group-hover:text-[#C88775] transition-colors">
+                                <p className="text-[var(--gf-text)] font-body group-hover:text-[var(--gf-accent)] transition-colors">
                                     @gerafilms
                                 </p>
                             </div>
                         </a>
                         <div className="flex items-center gap-4">
-                            <MapPin size={18} className="text-[#C88775]" />
+                            <MapPin size={18} className="text-[var(--gf-accent)]" />
                             <div >
                                 <span className="overline">Studio</span>
-                                <p className="text-[#2C2A29] font-body">
+                                <p className="text-[var(--gf-text)] font-body">
                                     12, Indri Road, Ladwa, Haryana 132041
                                 </p>
                             </div>
@@ -132,7 +132,7 @@ export default function Contact() {
                 <form
                     onSubmit={handleSubmit}
                     data-testid="inquiry-form"
-                    className="lg:col-span-7 bg-[#F5F2EB] p-8 md:p-12"
+                    className="lg:col-span-7 bg-[var(--gf-surface)] p-8 md:p-12 transition-colors duration-500"
                 >
                     <div className="grid md:grid-cols-2 gap-6 md:gap-8">
                         <label className="block">

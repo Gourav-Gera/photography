@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Sun, Moon } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "react-router-dom";
 
@@ -15,6 +15,30 @@ const links = [
 export default function Navbar() {
     const [open, setOpen] = useState(false);
     const [scrolled, setScrolled] = useState(false);
+    const [isDark, setIsDark] = useState(true);
+
+    useEffect(() => {
+        const theme = localStorage.getItem("theme");
+        if (theme === "dark" || !theme) {
+            document.documentElement.classList.add("dark");
+            setIsDark(true);
+        } else {
+            document.documentElement.classList.remove("dark");
+            setIsDark(false);
+        }
+    }, []);
+
+    const toggleTheme = () => {
+        if (isDark) {
+            document.documentElement.classList.remove("dark");
+            localStorage.setItem("theme", "light");
+            setIsDark(false);
+        } else {
+            document.documentElement.classList.add("dark");
+            localStorage.setItem("theme", "dark");
+            setIsDark(true);
+        }
+    };
 
     useEffect(() => {
         const onScroll = () => setScrolled(window.scrollY > 20);
@@ -26,20 +50,20 @@ export default function Navbar() {
         <header
             data-testid="main-nav"
     className={`fixed top-0 inset-x-0 z-50 transition-all duration-500 ${scrolled
-            ?"bg-[#FDFBF7]/90 backdrop-blur-md border-b border-[#E8E3DA]/60"
-          : "bg-transparent"
+            ? "bg-[var(--gf-bg)]/95 backdrop-blur-md border-b border-[var(--gf-border)]"
+            : "bg-transparent"
 } `}
     >
-      <div className="max-w-7xl mx-auto px-6 md:px-12 flex items-center justify-between h-20">
+      <div className="max-w-[1440px] mx-auto px-6 md:px-12 flex items-center justify-between h-20">
         <Link
           to="/"
           data-testid="brand-logo"
           className="flex items-baseline gap-2"
         >
-          <span className="font-display text-2xl md:text-3xl tracking-tight text-[#2C2A29]">
+          <span className="font-display text-2xl md:text-3xl tracking-tight text-[var(--gf-text)]">
             Gera
           </span>
-          <span className="font-display italic text-2xl md:text-3xl text-[#C88775]">
+          <span className="font-display italic text-2xl md:text-3xl text-[var(--gf-accent)]">
             Films
           </span>
         </Link>
@@ -51,30 +75,48 @@ export default function Navbar() {
               key={l.href}
               href={l.href}
               data-testid={`nav - ${ l.label.toLowerCase() } `}
-              className="text-[11px] uppercase tracking-[0.22em] text-[#595553] hover:text-[#C88775] transition-colors"
+              className="text-[11px] uppercase tracking-[0.22em] text-[var(--gf-text-soft)] hover:text-[var(--gf-accent)] transition-colors"
             >
               {l.label}
             </a>
           ))}
         </nav>
 
-        <a
-          href="#contact"
-          data-testid="nav-book-cta"
-          className="hidden md:inline-flex gf-btn-primary"
-          style={{ padding: "0.75rem 1.5rem" }}
-        >
-          Book a Shoot
-        </a>
+        <div className="hidden md:flex items-center gap-6">
+            <button
+                onClick={toggleTheme}
+                className="p-2 text-[var(--gf-text-soft)] hover:text-[var(--gf-text)] transition-colors"
+                aria-label="Toggle theme"
+            >
+                {isDark ? <Sun size={18} /> : <Moon size={18} />}
+            </button>
+            <a
+            href="#contact"
+            data-testid="nav-book-cta"
+            className="gf-btn-primary"
+            style={{ padding: "0.75rem 1.5rem" }}
+            >
+            Book a Shoot
+            </a>
+        </div>
 
-        <button
-          data-testid="mobile-menu-toggle"
-          onClick={() => setOpen(!open)}
-          className="md:hidden p-2 text-[#2C2A29]"
-          aria-label="Menu"
-        >
-          {open ? <X size={22} /> : <Menu size={22} />}
-        </button>
+        <div className="flex items-center gap-4 md:hidden">
+            <button
+                onClick={toggleTheme}
+                className="p-2 text-[var(--gf-text-soft)] hover:text-[var(--gf-text)] transition-colors"
+                aria-label="Toggle theme"
+            >
+                {isDark ? <Sun size={18} /> : <Moon size={18} />}
+            </button>
+            <button
+            data-testid="mobile-menu-toggle"
+            onClick={() => setOpen(!open)}
+            className="p-2 text-[var(--gf-text)]"
+            aria-label="Menu"
+            >
+            {open ? <X size={22} /> : <Menu size={22} />}
+            </button>
+        </div>
       </div>
 
       <AnimatePresence>
@@ -83,7 +125,7 @@ export default function Navbar() {
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
-            className="md:hidden bg-[#FDFBF7] border-t border-[#E8E3DA] overflow-hidden"
+            className="md:hidden bg-[var(--gf-bg)] border-t border-[var(--gf-border)] overflow-hidden"
           >
             <div className="flex flex-col px-6 py-6 gap-5">
               {links.map((l) => (
@@ -92,7 +134,7 @@ export default function Navbar() {
                   href={l.href}
                   onClick={() => setOpen(false)}
                   data-testid={`mobile-nav - ${ l.label.toLowerCase() } `}
-                  className="text-sm uppercase tracking-[0.22em] text-[#595553]"
+                  className="text-sm uppercase tracking-[0.22em] text-[var(--gf-text-soft)]"
                 >
                   {l.label}
                 </a>

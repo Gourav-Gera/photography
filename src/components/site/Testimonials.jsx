@@ -37,24 +37,24 @@ export default function Testimonials() {
     return (
         <section
             data-testid="testimonials-section"
-    className="py-24 md:py-32 lg:py-40 bg-[#F5F2EB]"
+    className="py-24 md:py-32 lg:py-40 bg-[var(--gf-surface)] transition-colors duration-500"
         >
-        <div className="max-w-5xl mx-auto px-6 md:px-12 text-center">
+        <div className="max-w-[1440px] mx-auto px-6 md:px-12 text-center">
             <span className="overline">Kind Words</span>
                 <Quote
     size={ 44}
-    className="mx-auto mt-8 text-[#C88775]"
+    className="mx-auto mt-8 text-[var(--gf-accent)]"
     strokeWidth={ 1}
         />
         <blockquote
             key={item.q}
             data-testid="testimonial-quote"
-    className="font-display italic text-3xl md:text-4xl lg:text-5xl font-light text-[#2C2A29] mt-8 leading-[1.15]"
+    className="font-display italic text-3xl md:text-4xl lg:text-5xl font-light text-[var(--gf-text)] mt-8 leading-[1.15]"
         >
     "{item.q}"
         </blockquote>
         <div className="mt-10">
-            <p className="font-display text-2xl text-[#2C2A29]">{item.name}</p>
+            <p className="font-display text-2xl text-[var(--gf-text)]">{item.name}</p>
                 <p className="overline mt-1">{item.loc}</p>
         </div>
         <div className="mt-10 flex items-center justify-center gap-2" data-testid="testimonial-dots">
@@ -65,7 +65,7 @@ export default function Testimonials() {
                 onClick={() => setI(idx)}
                 data-testid={`testimonial-dot-${idx}`}
                 aria-label={`Show testimonial ${idx + 1}`}
-                className={`h-[2px] transition-all ${idx === i ?"w-10 bg-[#2C2A29]" : "w-5 bg-[#C88775]/40"
+                className={`h-[2px] transition-all ${idx === i ?"w-10 bg-[var(--gf-text)]" : "w-5 bg-[var(--gf-accent)]/40"
               } `}
             />
           ))}

@@ -13,6 +13,19 @@
     --gf-accent-hover: #b57b67;
     --gf-accent-deep: #5c2b29;
     --gf-border: #e8e3da;
+    --gf-placeholder: rgba(89, 85, 83, 0.5);
+}
+
+.dark {
+    --gf-bg: #0d0d0d;
+    --gf-surface: #161616;
+    --gf-text: #f5f0eb;
+    --gf-text-soft: #b8b3af;
+    --gf-accent: #c88775;
+    --gf-accent-hover: #b57b67;
+    --gf-accent-deep: #5c2b29;
+    --gf-border: #2e2e2e;
+    --gf-placeholder: rgba(245, 240, 235, 0.45);
 }
 
 html,
@@ -62,6 +75,28 @@ body {
         --input: 34 26% 88%;
         --ring: 15 40% 63%;
         --radius: 0.25rem;
+    }
+
+    .dark {
+        --background: 240 10% 4%;
+        --foreground: 0 0% 98%;
+        --card: 240 10% 4%;
+        --card-foreground: 0 0% 98%;
+        --popover: 240 10% 4%;
+        --popover-foreground: 0 0% 98%;
+        --primary: 0 0% 98%;
+        --primary-foreground: 240 5.9% 10%;
+        --secondary: 240 3.7% 15.9%;
+        --secondary-foreground: 0 0% 98%;
+        --muted: 240 3.7% 15.9%;
+        --muted-foreground: 240 5% 64.9%;
+        --accent: 240 3.7% 15.9%;
+        --accent-foreground: 0 0% 98%;
+        --destructive: 0 62.8% 30.6%;
+        --destructive-foreground: 0 0% 98%;
+        --border: 240 3.7% 15.9%;
+        --input: 240 3.7% 15.9%;
+        --ring: 240 4.9% 83.9%;
     }
 }
 
@@ -167,15 +202,73 @@ html {
 }
 
 .gf-input::placeholder {
-    color: rgba(89, 85, 83, 0.5);
+    color: var(--gf-placeholder);
 }
+
+/* Fix select options in dark mode */
+.dark select.gf-input option {
+    background-color: var(--gf-surface);
+    color: var(--gf-text);
+}
+
+/* Fix date input color in dark mode */
+.dark input[type="date"].gf-input {
+    color-scheme: dark;
+}
+
 
 .overline {
     font-family: "Outfit", sans-serif;
     text-transform: uppercase;
-    letter-spacing: 0.25em;
+    letter-spacing: 0.3em;
     font-size: 0.7rem;
-    color: var(--gf-text-soft);
-    font-weight: 500;
+    color: var(--gf-accent);
+    font-weight: 600;
+}
+
+/* Reference-inspired accents */
+.section-title {
+    position: relative;
+    display: inline-block;
+    padding-bottom: 0.5rem;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 60px;
+    height: 4px;
+    background-color: var(--gf-accent);
+}
+
+.corner-accent {
+    position: relative;
+}
+
+.corner-accent::before,
+.corner-accent::after {
+    content: '';
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    border-color: rgba(255, 255, 255, 0.15);
+    pointer-events: none;
+    z-index: 10;
+}
+
+.corner-accent::before {
+    top: 15px;
+    left: 15px;
+    border-top: 1px solid;
+    border-left: 1px solid;
+}
+
+.corner-accent::after {
+    bottom: 15px;
+    right: 15px;
+    border-bottom: 1px solid;
+    border-right: 1px solid;
 }
 

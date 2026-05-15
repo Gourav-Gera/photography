@@ -55,20 +55,20 @@ export default function Services() {
         <section
             id="services"
     data-testid="services-section"
-    className="py-24 md:py-32 lg:py-40 bg-[#FDFBF7]"
+    className="py-24 md:py-32 lg:py-40 bg-[var(--gf-bg)] transition-colors duration-500"
         >
-        <div className="max-w-7xl mx-auto px-6 md:px-12">
+        <div className="max-w-[1440px] mx-auto px-6 md:px-12">
             <div className="grid lg:grid-cols-12 gap-10 mb-16 md:mb-20 items-end">
                 <div className="lg:col-span-7">
                     <span className="overline">What We Craft</span>
-                        <h2 className="font-display font-light text-4xl md:text-5xl lg:text-6xl text-[#2C2A29] mt-4 leading-[1.05]">
+                        <h2 className="font-display font-light text-4xl md:text-5xl lg:text-6xl text-[var(--gf-text)] mt-4 leading-[1.05]">
               A studio for the
         <br />
-        <em className="italic text-[#C88775]">once-in-a-lifetime</em>
+        <em className="italic text-[var(--gf-accent)]">once-in-a-lifetime</em>
               moments.
             </h2>
           </div>
-        <p className="lg:col-span-4 text-[#595553] text-base md:text-lg leading-relaxed font-light">
+        <p className="lg:col-span-4 text-[var(--gf-text-soft)] text-base md:text-lg leading-relaxed font-light">
             From the intimate roka at home to a week of destination rituals — we
             work across six disciplines, each with the same obsessive eye for
             composition, colour, and feeling.
@@ -77,21 +77,21 @@ export default function Services() {
 
         <div className="grid lg:grid-cols-12 gap-10 lg:gap-16">
           {/* Editorial list */}
-          <ul className="lg:col-span-7 divide-y divide-[#E8E3DA] border-y border-[#E8E3DA]">
+          <ul className="lg:col-span-7 divide-y divide-[var(--gf-border)] border-y border-[var(--gf-border)]">
             {services.map((s, i) => (
               <li
                 key={s.number}
                 onMouseEnter={() => setActive(i)}
                 data-testid={`service-item-${i}`}
                 className={`group transition-colors ${
-                  active === i ? "text-[#2C2A29]" : "text-[#595553]"
+                  active === i ? "text-[var(--gf-text)]" : "text-[var(--gf-text-soft)]"
                 }`}
               >
                 <Link
                   to={`/service/${s.id}`}
                   className="grid grid-cols-[auto_1fr_auto] gap-6 md:gap-10 items-center py-8 md:py-10"
                 >
-                  <span className="overline text-[#C88775]">{s.number}</span>
+                  <span className="overline text-[var(--gf-accent)]">{s.number}</span>
                   <div>
                     <h3 className="font-display text-3xl md:text-4xl lg:text-5xl font-light leading-none transition-colors">
                       {s.title}
@@ -103,7 +103,7 @@ export default function Services() {
                   <span
                     className={`overline transition-all ${
                       active === i
-                        ? "text-[#C88775] translate-x-0"
+                        ? "text-[var(--gf-accent)] translate-x-0"
                         : "opacity-0 -translate-x-2"
                     }`}
                   >
@@ -132,7 +132,7 @@ export default function Services() {
                 data-testid="service-preview-image"
               />
               <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black/50 to-transparent text-white">
-                <span className="overline" style={{ color: "#FDFBF7" }}>
+                <span className="overline" style={{ color: "var(--gf-bg)" }}>
                   {services[active].number}
                 </span>
                 <h4 className="font-display text-2xl mt-1">{services[active].title}</h4>

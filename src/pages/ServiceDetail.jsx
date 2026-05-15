@@ -65,7 +65,7 @@ export default function ServiceDetail() {
 
   if (!service) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-[#FDFBF7]">
+      <div className="min-h-screen flex items-center justify-center bg-[var(--gf-bg)] transition-colors duration-500">
         <div className="text-center">
           <h1 className="font-display text-4xl mb-4">Service not found</h1>
           <Link to="/" className="gf-btn-primary">Back to Home</Link>
@@ -75,23 +75,23 @@ export default function ServiceDetail() {
   }
 
   return (
-    <main className="bg-[#FDFBF7]">
+    <main className="bg-[var(--gf-bg)] transition-colors duration-500">
       <Navbar />
       
       {/* Detail Hero */}
       <section className="pt-32 pb-20 px-6 md:px-12 max-w-7xl mx-auto">
-        <Link to="/" className="inline-flex items-center gap-2 overline text-[#C88775] hover:gap-4 transition-all mb-8">
+        <Link to="/" className="inline-flex items-center gap-2 overline text-[var(--gf-accent)] hover:gap-4 transition-all mb-8">
           <ArrowLeft size={14} /> Back to studio
         </Link>
         
         <div className="grid lg:grid-cols-12 gap-10 items-end">
           <div className="lg:col-span-8">
             <span className="overline">Our Expertise</span>
-            <h1 className="font-display font-light text-5xl md:text-6xl lg:text-8xl text-[#2C2A29] mt-4 leading-[1.05]">
-              {service.title.split(' ')[0]} <em className="italic text-[#C88775]">{service.title.split(' ').slice(1).join(' ')}</em>
+            <h1 className="font-display font-light text-5xl md:text-6xl lg:text-8xl text-[var(--gf-text)] mt-4 leading-[1.05]">
+              {service.title.split(' ')[0]} <em className="italic text-[var(--gf-accent)]">{service.title.split(' ').slice(1).join(' ')}</em>
             </h1>
           </div>
-          <p className="lg:col-span-4 text-[#595553] text-lg font-light leading-relaxed">
+          <p className="lg:col-span-4 text-[var(--gf-text-soft)] text-lg font-light leading-relaxed">
             {service.desc}
           </p>
         </div>

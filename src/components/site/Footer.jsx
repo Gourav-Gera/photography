@@ -5,13 +5,13 @@ export default function Footer() {
     return (
         <footer
             data-testid="footer"
-    className="bg-[#2C2A29] text-[#FDFBF7] pt-20 pb-10"
+    className="bg-[#2C2A29] dark:bg-black text-[#FDFBF7] pt-20 pb-10 transition-colors duration-500"
         >
-        <div className="max-w-7xl mx-auto px-6 md:px-12 grid md:grid-cols-12 gap-12">
+        <div className="max-w-[1440px] mx-auto px-6 md:px-12 grid md:grid-cols-12 gap-12">
             <div className="md:col-span-5">
                 <div className="flex items-baseline gap-2">
                     <span className="font-display text-3xl">Gera</span>
-                        <span className="font-display italic text-3xl text-[#C88775]">
+                        <span className="font-display italic text-3xl text-[var(--gf-accent)]">
     Films
             </span>
           </div>
@@ -22,7 +22,7 @@ export default function Footer() {
         </div>
 
         <div className="md:col-span-3">
-            <span className="overline" style={{ color: "#C88775" }}>
+            <span className="overline" style={{ color: "var(--gf-accent)" }}>
     Explore
           </span>
         <ul className="mt-5 space-y-3">
@@ -33,7 +33,7 @@ export default function Footer() {
                 <a
                     href={`#${l.toLowerCase()}`}
                     data-testid={`footer-link-${l.toLowerCase()}`}
-                    className="text-[#FDFBF7]/70 hover:text-[#C88775] text-sm transition-colors"
+                                        className="text-[#FDFBF7]/70 hover:text-[var(--gf-accent)] text-sm transition-colors"
                   >
                 {l}
             </a>
@@ -44,7 +44,7 @@ export default function Footer() {
         </div>
 
         <div className="md:col-span-4">
-            <span className="overline" style={{ color: "#C88775" }}>
+            <span className="overline" style={{ color: "var(--gf-accent)" }}>
     Studio
           </span>
         <ul className="mt-5 space-y-3 text-[#FDFBF7]/80 text-sm font-light">
@@ -79,9 +79,9 @@ export default function Footer() {
         </div>
       </div>
 
-        <div className="max-w-7xl mx-auto px-6 md:px-12 mt-16 pt-6 border-t border-[#FDFBF7]/10 flex flex-col md:flex-row items-center justify-between gap-3 text-xs text-[#FDFBF7]/50">
+        <div className="max-w-[1440px] mx-auto px-6 md:px-12 mt-16 pt-6 border-t border-[#FDFBF7]/10 flex flex-col md:flex-row items-center justify-between gap-3 text-xs text-[#FDFBF7]/50">
             <span >© { new Date().getFullYear() } Gera Films.All rights reserved.</span>
-                <span className="overline" style={{ color: "#C88775" }}>
+                <span className="overline" style={{ color: "var(--gf-accent)" }}>
           Crafted with care
         </span>
       </div>
